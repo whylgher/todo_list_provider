@@ -1,7 +1,8 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:synchronized/synchronized.dart';
-import 'package:todo_list_provider/app/core/database/sqlite_migration_factory.dart';
+
+import 'sqlite_migration_factory.dart';
 
 class SqliteConnectionFactory {
   static const _VERSION = 1;
