@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'core/database/sqlite_adm_connection.dart';
@@ -16,6 +17,7 @@ class _AppWidgetState extends State<AppWidget> {
   final sqliteAdmConnection = SqliteAdmConnection();
   @override
   void initState() {
+    FirebaseAuth auth = FirebaseAuth.instance;
     super.initState();
     WidgetsBinding.instance.addObserver(sqliteAdmConnection);
   }

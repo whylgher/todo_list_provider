@@ -31,4 +31,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <application android:usesCleartextTraffic="true">
+        <!-- possibly other elements -->
+    </application>
 </manifest>
