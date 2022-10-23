@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(
-                      height: 10,
+                      height: 40,
                     ),
                     const TodoListLogo(),
                     Padding(
