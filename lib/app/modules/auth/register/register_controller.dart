@@ -1,6 +1,5 @@
-import 'package:todo_list_provider/app/exception/auth_exception.dart';
-
 import '../../../core/notifier/default_change_notifier.dart';
+import '../../../exception/auth_exception.dart';
 import '../../../services/user/user_service.dart';
 
 class RegisterController extends DefaultChangeNotifier {
@@ -13,6 +12,7 @@ class RegisterController extends DefaultChangeNotifier {
     try {
       showLoadingAndResetState();
       notifyListeners();
+
       final user = await _userService.register(email, password);
 
       if (user != null) {
