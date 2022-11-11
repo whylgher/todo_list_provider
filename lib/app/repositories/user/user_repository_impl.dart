@@ -106,8 +106,11 @@ class UserRepositoryImpl implements UserRepository {
         }
       }
     } on FirebaseAuthException catch (e, s) {
+      print('\n\n');
       print(e);
+      print('\n\n');
       print(s);
+      print('\n\n');
 
       if (e.code == 'account-exists-with-different-credential') {
         throw AuthException(message: '''
@@ -118,6 +121,5 @@ class UserRepositoryImpl implements UserRepository {
         throw AuthException(message: 'Erro ao realizar Login.');
       }
     }
-    return null;
   }
 }
