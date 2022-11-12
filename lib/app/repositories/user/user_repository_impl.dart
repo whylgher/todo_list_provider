@@ -106,12 +106,8 @@ class UserRepositoryImpl implements UserRepository {
         }
       }
     } on FirebaseAuthException catch (e, s) {
-      print('\n\n');
       print(e);
-      print('\n\n');
       print(s);
-      print('\n\n');
-
       if (e.code == 'account-exists-with-different-credential') {
         throw AuthException(message: '''
           Login inválido, você se registrou no TodoList com os seguintes provedores:
@@ -120,6 +116,21 @@ class UserRepositoryImpl implements UserRepository {
       } else {
         throw AuthException(message: 'Erro ao realizar Login.');
       }
+    }
+  }
+
+  @override
+  Future<void> logout() async {
+    await GoogleSignIn().signOut();
+    _firebaseAuth.signOut();
+  }
+
+  @override
+  Future<void> updateDisplayName(String name) async {
+    final user = _firebaseAuth.currentUser;
+    if (user != null) {
+      await user.updateDisplayName(name);
+      user.reload();
     }
   }
 }

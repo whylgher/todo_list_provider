@@ -2,8 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'core/database/sqlite_adm_connection.dart';
+import 'core/navigator/todo_list_navigator.dart';
 import 'core/ui/todo_list_ui_config.dart';
 import 'modules/auth/auth_module.dart';
+import 'modules/home/home_module.dart';
 import 'modules/splash/splash_page.dart';
 
 class AppWidget extends StatefulWidget {
@@ -32,10 +34,12 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Todo List Provider',
-        initialRoute: '/login',
-        debugShowCheckedModeBanner: false,
         theme: TodoListUiConfig.theme,
-        routes: {...AuthModule().routers},
+        navigatorKey: TodoListNavigator.navigatorKey,
+        routes: {
+          ...AuthModule().routers,
+          ...HomeModule().routers,
+        },
         home: const SplashPage());
   }
 }
