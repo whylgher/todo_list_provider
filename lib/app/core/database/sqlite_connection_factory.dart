@@ -41,7 +41,7 @@ class SqliteConnectionFactory {
   }
 
   Future<void> _onConfigure(Database db) async {
-    await db.execute('PRAGMA foreing_keys = 0');
+    await db.execute('PRAGMA foreing_keys = ON');
   }
 
   Future<void> _onCreate(Database db, int version) async {
