@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../core/notifier/default_listener_notifier.dart';
 import '../../core/ui/theme_extensions.dart';
 import '../../core/ui/todo_list_icons.dart';
+import '../../models/task_filter_enum.dart';
 import '../tasks/tasks_module.dart';
 import 'home_controller.dart';
 import 'home_tasks.dart';
@@ -25,11 +27,19 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    widget._homeController.loadTotalTasks();
+    DefaultListenerNotifier(changeNotifier: widget._homeController).listener(
+        context: context,
+        successCallback: (notifier, listenerInstance) {
+          listenerInstance.dispose();
+        });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      widget._homeController.loadTotalTasks();
+      widget._homeController.findTasks(filter: TaskFilterEnum.today);
+    });
   }
 
-  void _goToCreateTask(BuildContext context) {
-    Navigator.of(context).push(
+  Future<void> _goToCreateTask(BuildContext context) async {
+    await Navigator.of(context).push(
       PageRouteBuilder(
         transitionDuration: Duration(milliseconds: 400),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -46,6 +56,7 @@ class _HomePageState extends State<HomePage> {
         }),
       ),
     );
+    widget._homeController.refreshPage();
   }
 
   @override

@@ -1,6 +1,5 @@
-import 'package:todo_list_provider/app/models/task_model.dart';
-
 import './tasks_service.dart';
+import '../../../models/task_model.dart';
 import '../../../models/week_task_model.dart';
 import '../../../repositories/tasks/tasks_repository.dart';
 

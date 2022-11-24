@@ -1,7 +1,6 @@
-import 'package:todo_list_provider/app/models/task_model.dart';
-
 import './tasks_repository.dart';
 import '../../core/database/sqlite_connection_factory.dart';
+import '../../models/task_model.dart';
 
 class TasksRepositoryImpl implements TasksRepository {
   final SqliteConnectionFactory _sqliteConnectionFactory;
