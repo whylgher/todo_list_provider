@@ -15,7 +15,7 @@ class TasksServiceImpl implements TasksService {
       _tasksRepository.save(date, description);
 
   @override
-  Future<List<TaskModel>> getToMorrow() {
+  Future<List<TaskModel>> getToday() {
     return _tasksRepository.findByPeriod(
       DateTime.now(),
       DateTime.now(),
@@ -23,7 +23,7 @@ class TasksServiceImpl implements TasksService {
   }
 
   @override
-  Future<List<TaskModel>> getToday() {
+  Future<List<TaskModel>> getToMorrow() {
     var tomorrowDate = DateTime.now().add(Duration(days: 1));
     return _tasksRepository.findByPeriod(tomorrowDate, tomorrowDate);
   }
