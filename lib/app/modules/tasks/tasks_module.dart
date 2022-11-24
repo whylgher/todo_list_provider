@@ -1,11 +1,11 @@
 import 'package:provider/provider.dart';
-import 'package:todo_list_provider/app/modules/tasks/task_create_controller.dart';
 
 import '../../core/modules/todo_list_module.dart';
 import '../../repositories/tasks/tasks_repository.dart';
 import '../../repositories/tasks/tasks_repository_impl.dart';
 import '../../services/user/tasks/tasks_service.dart';
 import '../../services/user/tasks/tasks_service_impl.dart';
+import 'task_create_controller.dart';
 import 'task_create_page.dart';
 
 class TasksModule extends TodoListModule {

@@ -45,25 +45,25 @@ class SqliteConnectionFactory {
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    final batch = _db?.batch();
+    final batch = db.batch();
 
     final migrations = SqliteMigrationFactory().getCreateMigration();
     for (var migration in migrations) {
-      migration.create(batch!);
+      migration.create(batch);
     }
 
-    batch?.commit();
+    batch.commit();
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int version) async {
-    final batch = _db?.batch();
+    final batch = db.batch();
 
     final migrations = SqliteMigrationFactory().getUpgradeMigration(oldVersion);
     for (var migration in migrations) {
-      migration.update(batch!);
+      migration.update(batch);
     }
 
-    batch?.commit();
+    batch.commit();
   }
 
   Future<void> _onDowngrade(Database db, int oldVersion, int version) async {}
